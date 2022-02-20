@@ -10,7 +10,7 @@ namespace Dmpk_TPS
             
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent( out WeaponManager weaponScript))
+            if(other.TryGetComponent( out WeaponController weaponScript))
             {
                 if(weaponScript.CanPickUp(weapon))
                 {

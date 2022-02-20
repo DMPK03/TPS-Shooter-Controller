@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Dmpk_TPS
 {
-    public class AnimationControl : MonoBehaviour
+    public class AnimationController : MonoBehaviour
     {        
-        private IKcontroller ik;
+        private IkController ik;
         private Animator animator;
 
         private int crouch, sideways, forward, freeFall, jump, grounded, sprint, speedMulti, reload, swap;
@@ -20,7 +20,7 @@ namespace Dmpk_TPS
         private void Start()
         {
             animator = GetComponent<Animator>();
-            ik = GetComponent<IKcontroller>();
+            ik = GetComponent<IkController>();
         }
 
 #region Movement
@@ -79,13 +79,13 @@ namespace Dmpk_TPS
 
         private void SubEvents()
         {
-            Movement.moveEvent += SetMoving;
-            Movement.Grounded += g => animator.SetBool(grounded, g);
-            Movement.Jump += j => animator.SetBool(jump, j);
-            Movement.FreeFall += ff => animator.SetBool(freeFall, ff);
-            Movement.Crouch += c => animator.SetBool(crouch, c);
-            WeaponManager.ReloadWeapon += ReloadWeapon;
-            WeaponManager.SwitchWeapon += SwitchWeapon;
+            MovementController.moveEvent += SetMoving;
+            MovementController.Grounded += g => animator.SetBool(grounded, g);
+            MovementController.Jump += j => animator.SetBool(jump, j);
+            MovementController.FreeFall += ff => animator.SetBool(freeFall, ff);
+            MovementController.Crouch += c => animator.SetBool(crouch, c);
+            WeaponController.ReloadWeapon += ReloadWeapon;
+            WeaponController.SwitchWeapon += SwitchWeapon;
         }
         
     }

@@ -5,7 +5,7 @@ using Cinemachine;
 
 namespace Dmpk_TPS
 {    
-    public class CameraControl : MonoBehaviour
+    public class CameraController : MonoBehaviour
     {		
 		[SerializeField]private CinemachineFreeLook cmFreeLook;
 		private float sensitivity = .3f;

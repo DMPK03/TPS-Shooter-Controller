@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Dmpk_TPS
 {
-    public class WeaponManager : MonoBehaviour
+    public class WeaponController : MonoBehaviour
     {
         public static event Action<bool> SwitchWeapon, ReloadWeapon;
         

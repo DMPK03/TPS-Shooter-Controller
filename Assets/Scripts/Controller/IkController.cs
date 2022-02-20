@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Dmpk_TPS
 {
     [RequireComponent(typeof(Animator))]
-    public class IKcontroller : MonoBehaviour
+    public class IkController : MonoBehaviour
     {
         [Range(0,1)]public float SpineWeight;
         

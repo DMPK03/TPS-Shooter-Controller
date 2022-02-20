@@ -3,7 +3,7 @@ using System;
 
 namespace Dmpk_TPS
 {
-    public class Movement : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
 		public static event Action<float, float, float> moveEvent;
 		public static event Action<bool> FreeFall, Jump, Grounded, Crouch;

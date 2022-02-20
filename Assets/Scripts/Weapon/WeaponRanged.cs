@@ -9,7 +9,6 @@ namespace Dmpk_TPS
     {
         
         [SerializeField] private GameObject impactEffect;
-        [SerializeField] private GameObject bloodEffect;
 
         [SerializeField] private int weaponDamage;
         [SerializeField] private ParticleSystem muzzleFlashParticle, tracerParticle;
@@ -19,7 +18,6 @@ namespace Dmpk_TPS
             currentAmmo --;
 
             RaycastHit hit;
-            GameObject impactPe;
             
             tracerParticle.Play();
             muzzleFlashParticle.Play();
@@ -27,25 +25,21 @@ namespace Dmpk_TPS
             
             if (Physics.Raycast(muzzle.position, muzzle.forward, out hit))
             {
-                Health health = hit.transform.GetComponent<Health>();
-                Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
-                if(health != null)
+                if(hit.transform.TryGetComponent( out IDamagable target))
                 {
-                    impactPe = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    health.takeDamage(weaponDamage);
+                    target.Damage(weaponDamage, 5f, hit);
                 }
                 else
                 {
-                    impactPe = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    if (rb != null) rb.AddForce(0, 0, 5f, ForceMode.Impulse);
+                    GameObject _impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(_impact, .2f);
                 }
-                
-                Destroy(impactPe, .2f);
             }
-                if (source != null)
-                {
-                    source.Play();
-                }
+
+            if (source != null)
+            {
+                source.Play();
+            }
         }
     }
 }
