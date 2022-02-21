@@ -27,7 +27,7 @@ shooting, reloading, weapon switching. Particles for muzzle flash, bullet tracer
 
 Pick up new weapons.
 
-Raycasts for hit detection. Applies dmg, knockback, bleed/hit effect depending on target hit (still work in progress).
+Raycasts for hit detection. Applies dmg, knockback, bleed/hit effect depending on target hit.
 
 Ik for differend hand positions for each weapon, so i wont need a sepparate animation.
 
@@ -35,7 +35,8 @@ Ik for differend hand positions for each weapon, so i wont need a sepparate anim
 Only basic for now, gunshot, reload, gun empty.
 
 ### Health system and basic Ai
-currently working on, not done yet
+Very basic state based ai (static, roaming atm, chase and attack coming soon)
+
 
 ### Inventory system and UI
 soon
