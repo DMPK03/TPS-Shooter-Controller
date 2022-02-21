@@ -27,7 +27,7 @@ namespace Dmpk_TPS
             {
                 if(hit.transform.TryGetComponent( out IDamagable target))
                 {
-                    target.Damage(weaponDamage, 5f, hit);
+                    target.TakeDamage(weaponDamage, 5f, hit);
                 }
                 else
                 {

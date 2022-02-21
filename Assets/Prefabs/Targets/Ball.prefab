@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
+  targetHealth: 100
 --- !u!1 &8796429962414938783
 GameObject:
   m_ObjectHideFlags: 0
