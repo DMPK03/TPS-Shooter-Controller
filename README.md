@@ -39,7 +39,9 @@ Very basic state based ai (static, roaming atm, chase and attack coming soon)
 
 
 ### Inventory system and UI
-soon
+displays weapon/ammo health etc
+
+full ui and inventory coming soon
 
 
 
