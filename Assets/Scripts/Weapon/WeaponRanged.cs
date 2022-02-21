@@ -17,6 +17,8 @@ namespace Dmpk_TPS
         {      
             currentAmmo --;
 
+            SendAmmo();
+
             RaycastHit hit;
             
             tracerParticle.Play();

@@ -11,10 +11,12 @@ namespace Dmpk_TPS
     public abstract class Weapon : MonoBehaviour
     {
         public static event Action<Transform, Transform, Transform> SetIKEvent;
-        
-        public WeaponType WeaponType { get; }
+        public static event Action<string, Sprite, int, int> WeaponSelectedEvent;
+        public static event Action<int> WeaponFireEvent;
 
-        public Sprite UiImage { get; }
+        [Header("Info")]
+        [SerializeField] private string weaponName;
+        [SerializeField] private Sprite weaponSprite;
 
         [Header("Audio")]
         [SerializeField] private protected AudioClip gunShotClip;
@@ -46,6 +48,13 @@ namespace Dmpk_TPS
         {
             source.clip = gunShotClip;
             currentAmmo = UnityEngine.Random.Range(1, clipSize);
+
+            Selected();
+        }
+
+        public void Selected()
+        {
+            WeaponSelectedEvent?.Invoke(weaponName, weaponSprite, clipSize, currentAmmo);
         }
 
         public void ReloadStart()
@@ -53,6 +62,8 @@ namespace Dmpk_TPS
             source.clip = reloadClip;
             source.Play();
         }
+
+        public void SendAmmo() => WeaponFireEvent?.Invoke(currentAmmo);
 
         public void SetIk()
         {
@@ -67,6 +78,8 @@ namespace Dmpk_TPS
         public void ReloadEnd()
         {
             currentAmmo += clipSize - currentAmmo;
+
+            SendAmmo();
         }
 
         public void FireWeapon()
@@ -92,14 +105,4 @@ namespace Dmpk_TPS
 
     }
 
-    public enum WeaponType
-    {
-        machineGun,
-        pistol,
-        riffle,
-        shotgun,
-        special,
-        smg,
-        melee
-    };
 }
