@@ -9,6 +9,13 @@ namespace Dmpk_TPS
 
         public int Current { get; private set; }
 
+        public Health(int max)
+        {
+            this.max = max;
+            this.Min = 0;
+            this.Current = max;
+        }
+        
         public Health(int max, int min)
         {
             this.max = max;

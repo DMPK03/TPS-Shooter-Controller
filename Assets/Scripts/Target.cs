@@ -6,16 +6,11 @@ using UnityEngine;
 namespace Dmpk_TPS
 {    
     [RequireComponent(typeof(Rigidbody))]
-    public class Target : MonoBehaviour, IDamagable 
-    {
-        [SerializeField] private GameObject impactEffect;
-        [SerializeField] private int targetHealth;
-        
+    public class Target : MonoBehaviour, IActor 
+    {       
         private Rigidbody rb;
-        private Health health;
 
         private void Awake() {
-            health = new Health(targetHealth, 0);
             rb = GetComponent<Rigidbody>();
         }
 
@@ -24,19 +19,14 @@ namespace Dmpk_TPS
             Destroy(this.gameObject);
         }
 
-        public void TakeDamage(int damage, float force, RaycastHit hit)
+        public void TakeDamage(GameObject prefab, float force, RaycastHit hit)
         {
-            GameObject _impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject _impact = Instantiate(prefab, hit.point, Quaternion.LookRotation(hit.normal));
 
             Vector3 _impactForce = force * -hit.normal;
             rb.AddForce(_impactForce, ForceMode.Impulse);
 
             Destroy(_impact, .2f);
-
-            health.TakeDamage(damage);
-
-            if(health.Current == health.Min)
-                    Die();
         }
     }
 }

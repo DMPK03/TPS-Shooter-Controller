@@ -17,7 +17,6 @@ namespace Dmpk_TPS
 
         private protected override void Start()
         {
-            health = new Health(150, 0);
             agent = GetComponent<NavMeshAgent>();
 
             animator.SetInteger("Idle", Random.Range(0,3));
