@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Dmpk_TPS
 {    
-    [RequireComponent(typeof(Rigidbody))]
     public class Target : MonoBehaviour, IActor 
     {       
         private Rigidbody rb;
@@ -24,7 +23,7 @@ namespace Dmpk_TPS
             GameObject _impact = Instantiate(prefab, hit.point, Quaternion.LookRotation(hit.normal));
 
             Vector3 _impactForce = force * -hit.normal;
-            rb.AddForce(_impactForce, ForceMode.Impulse);
+            if(rb != null) rb.AddForce(_impactForce, ForceMode.Impulse);
 
             Destroy(_impact, .2f);
         }

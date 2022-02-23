@@ -4,15 +4,14 @@ using UnityEngine;
 
 namespace Dmpk_TPS
 {
-    public class WeaponSpecial : WeaponRanged
+    public class WeaponSpecial : Weapon
     {
-        public Rigidbody rocketPrefab;
+        [SerializeField] private Rigidbody rocketPrefab;
         
         public override void Fire()
         {
-            currentAmmo -=1;
             Rigidbody rocket = Instantiate(rocketPrefab, muzzle.position, muzzle.rotation);
-            rocket.velocity = transform.TransformDirection(Vector3.forward * 25f);
+            rocket.velocity = transform.TransformDirection(Vector3.forward * 30f);
         }
     }
 }

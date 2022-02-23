@@ -49,37 +49,27 @@ namespace Dmpk_TPS
             source.clip = gunShotClip;
             currentAmmo = UnityEngine.Random.Range(1, clipSize);
 
-            Selected();
-        }
-
-        public void Selected()
-        {
             WeaponSelectedEvent?.Invoke(weaponName, weaponSprite, clipSize, currentAmmo);
-        }
-
-        public void ReloadStart()
-        { 
-            source.clip = reloadClip;
-            source.Play();
         }
 
         public void SendAmmo() => WeaponFireEvent?.Invoke(currentAmmo);
 
-        public void SetIk()
-        {
-            SetIKEvent?.Invoke(rightHand, leftHand, muzzle);
-        }
+        public void SetIk() => SetIKEvent?.Invoke(rightHand, leftHand, muzzle);
 
-        public bool CanReload()
-        {
-            return currentAmmo != clipSize;
-        }
+        public bool CanReload() => currentAmmo != clipSize;
+
+        public void ReloadStart() => PlayAudio(reloadClip);
 
         public void ReloadEnd()
         {
             currentAmmo += clipSize - currentAmmo;
-
             SendAmmo();
+        }
+
+        private void PlayAudio(AudioClip audioClip)
+        {
+            source.clip = audioClip;
+            source.Play();
         }
 
         public void FireWeapon()
@@ -90,14 +80,15 @@ namespace Dmpk_TPS
 
                 if (currentAmmo > 0)
                 {
-                    source.clip = gunShotClip;
+                    currentAmmo --;
+                    SendAmmo();
+
+                    PlayAudio(gunShotClip);     //todo move audio and recoil to separate managers activated on weaponfire event
+                    cameraRecoil.GenerateImpulse(Camera.main.transform.forward);
+                    
                     Fire();
                 }
-                else
-                {
-                    source.clip = emptyClip;
-                    source.Play();
-                } 
+                else PlayAudio(emptyClip);
             }
         }
 
