@@ -9,7 +9,7 @@ namespace Dmpk_TPS
         private Animator animator;
 
         private int crouch, sideways, forward, freeFall, jump, grounded, sprint, speedMulti, reload, swap;
-        private bool sprinting, canIk = true;
+        private bool sprinting, canIkSpine, canIkHands = true;
 
         private void Awake()
         {
@@ -39,8 +39,8 @@ namespace Dmpk_TPS
         {
             if(ik != null)
             {
-                ik.SpineWeight = !sprinting && canIk? 1 : 0;   
-                ik.HandWeight = canIk? 1 : 0;
+                ik.SpineWeight = !sprinting && canIkHands && canIkSpine? 1 : 0;   
+                ik.HandWeight = canIkHands? 1 : 0;
             }
         }
 
@@ -50,14 +50,14 @@ namespace Dmpk_TPS
         private void ReloadWeapon(bool r)
         {
             animator.SetBool(reload, r);
-            canIk = !r;
+            canIkHands = !r;
             SetSpineIk();
         }
 
         private void SwitchWeapon(bool s)
         {
             animator.SetBool(swap, s);
-            canIk = !s;
+            canIkHands = !s;
             SetSpineIk();
         }
 
@@ -84,6 +84,7 @@ namespace Dmpk_TPS
             MovementController.Jump += j => animator.SetBool(jump, j);
             MovementController.FreeFall += ff => animator.SetBool(freeFall, ff);
             MovementController.Crouch += c => animator.SetBool(crouch, c);
+            InputManager.Aiming += a => canIkSpine = a;
             WeaponController.ReloadWeapon += ReloadWeapon;
             WeaponController.SwitchWeapon += SwitchWeapon;
         }

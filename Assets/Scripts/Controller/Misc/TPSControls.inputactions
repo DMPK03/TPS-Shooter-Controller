@@ -22,14 +22,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "85bd667c-71a6-4cbc-b4eb-f6e1a70b5acd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Zoom",
                     "type": "Value",
                     "id": "c73a00c1-a175-4b47-8a76-7b1abd3a3fec",
@@ -58,11 +50,11 @@
                     "type": "Button",
                     "id": "b3eb8077-86d9-4c32-a445-ae46affb2194",
                     "expectedControlType": "Button",
-                    "processors": "NormalizeVector2",
+                    "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Weapon1",
+                    "name": "Switch",
                     "type": "Value",
                     "id": "ee14a22d-520b-42fe-ad47-f71573525afc",
                     "expectedControlType": "Integer",
@@ -78,17 +70,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Direction",
-                    "type": "Value",
-                    "id": "b2fc100d-4576-4b1e-b863-30b245d83e5b",
-                    "expectedControlType": "Vector2",
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "bd985914-1e22-4a3f-99c7-011aae13194e",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
-                    "name": "Reload",
+                    "name": "Fire2",
                     "type": "Button",
-                    "id": "bd985914-1e22-4a3f-99c7-011aae13194e",
+                    "id": "aab22420-d188-4173-8e6b-5684583fee69",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "c34f10e7-1bef-494b-b18a-7021347cc32d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -100,7 +100,7 @@
                     "id": "7803c02f-824b-40ad-beb8-10a4c0ef0907",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "InvertVector2(invertX=false)",
+                    "processors": "NormalizeVector2,InvertVector2(invertX=false)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
@@ -163,17 +163,6 @@
                 },
                 {
                     "name": "",
-                    "id": "496769f2-9fef-4429-b4b6-145c45ae9551",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6645a9fc-e668-4adc-af8d-470008f1b9b8",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
@@ -223,7 +212,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Weapon1",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -234,7 +223,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=2)",
                     "groups": "",
-                    "action": "Weapon1",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -245,7 +234,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=3)",
                     "groups": "",
-                    "action": "Weapon1",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -256,7 +245,7 @@
                     "interactions": "",
                     "processors": "Scale(factor=4)",
                     "groups": "",
-                    "action": "Weapon1",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -273,23 +262,34 @@
                 },
                 {
                     "name": "",
-                    "id": "92ea7cd5-1e0d-4063-ba1e-1dcdee75d5c6",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Direction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "35122f04-dd21-4968-a353-a4559f50eea3",
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9f3b7a8-43fb-4ab5-a213-952a5d468f1c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0011e0ec-c2b8-4667-a3fe-2180cf9ac215",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

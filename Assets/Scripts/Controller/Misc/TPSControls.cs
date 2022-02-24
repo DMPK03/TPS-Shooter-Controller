@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Misc/TPSControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Controller/Misc/TPSControls.inputactions'
 
 using System;
 using System.Collections;
@@ -37,14 +37,6 @@ namespace Dmpk_TPS
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Aim"",
-                    ""type"": ""Button"",
-                    ""id"": ""85bd667c-71a6-4cbc-b4eb-f6e1a70b5acd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Zoom"",
                     ""type"": ""Value"",
                     ""id"": ""c73a00c1-a175-4b47-8a76-7b1abd3a3fec"",
@@ -73,11 +65,11 @@ namespace Dmpk_TPS
                     ""type"": ""Button"",
                     ""id"": ""b3eb8077-86d9-4c32-a445-ae46affb2194"",
                     ""expectedControlType"": ""Button"",
-                    ""processors"": ""NormalizeVector2"",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Weapon1"",
+                    ""name"": ""Switch"",
                     ""type"": ""Value"",
                     ""id"": ""ee14a22d-520b-42fe-ad47-f71573525afc"",
                     ""expectedControlType"": ""Integer"",
@@ -93,17 +85,25 @@ namespace Dmpk_TPS
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Direction"",
-                    ""type"": ""Value"",
-                    ""id"": ""b2fc100d-4576-4b1e-b863-30b245d83e5b"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""bd985914-1e22-4a3f-99c7-011aae13194e"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Reload"",
+                    ""name"": ""Fire2"",
                     ""type"": ""Button"",
-                    ""id"": ""bd985914-1e22-4a3f-99c7-011aae13194e"",
+                    ""id"": ""aab22420-d188-4173-8e6b-5684583fee69"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""c34f10e7-1bef-494b-b18a-7021347cc32d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -115,7 +115,7 @@ namespace Dmpk_TPS
                     ""id"": ""7803c02f-824b-40ad-beb8-10a4c0ef0907"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""InvertVector2(invertX=false)"",
+                    ""processors"": ""NormalizeVector2,InvertVector2(invertX=false)"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -178,17 +178,6 @@ namespace Dmpk_TPS
                 },
                 {
                     ""name"": """",
-                    ""id"": ""496769f2-9fef-4429-b4b6-145c45ae9551"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Aim"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6645a9fc-e668-4adc-af8d-470008f1b9b8"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",
@@ -238,7 +227,7 @@ namespace Dmpk_TPS
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Weapon1"",
+                    ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -249,7 +238,7 @@ namespace Dmpk_TPS
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=2)"",
                     ""groups"": """",
-                    ""action"": ""Weapon1"",
+                    ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -260,7 +249,7 @@ namespace Dmpk_TPS
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=3)"",
                     ""groups"": """",
-                    ""action"": ""Weapon1"",
+                    ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -271,7 +260,7 @@ namespace Dmpk_TPS
                     ""interactions"": """",
                     ""processors"": ""Scale(factor=4)"",
                     ""groups"": """",
-                    ""action"": ""Weapon1"",
+                    ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -288,23 +277,34 @@ namespace Dmpk_TPS
                 },
                 {
                     ""name"": """",
-                    ""id"": ""92ea7cd5-1e0d-4063-ba1e-1dcdee75d5c6"",
-                    ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Direction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""35122f04-dd21-4968-a353-a4559f50eea3"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9f3b7a8-43fb-4ab5-a213-952a5d468f1c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0011e0ec-c2b8-4667-a3fe-2180cf9ac215"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -317,15 +317,15 @@ namespace Dmpk_TPS
             m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
             m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-            m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
             m_Gameplay_Zoom = m_Gameplay.FindAction("Zoom", throwIfNotFound: true);
             m_Gameplay_Crouch = m_Gameplay.FindAction("Crouch", throwIfNotFound: true);
             m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
             m_Gameplay_Fire1 = m_Gameplay.FindAction("Fire1", throwIfNotFound: true);
-            m_Gameplay_Weapon1 = m_Gameplay.FindAction("Weapon1", throwIfNotFound: true);
+            m_Gameplay_Switch = m_Gameplay.FindAction("Switch", throwIfNotFound: true);
             m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-            m_Gameplay_Direction = m_Gameplay.FindAction("Direction", throwIfNotFound: true);
             m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
+            m_Gameplay_Fire2 = m_Gameplay.FindAction("Fire2", throwIfNotFound: true);
+            m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -377,30 +377,30 @@ namespace Dmpk_TPS
         private IGameplayActions m_GameplayActionsCallbackInterface;
         private readonly InputAction m_Gameplay_Look;
         private readonly InputAction m_Gameplay_Move;
-        private readonly InputAction m_Gameplay_Aim;
         private readonly InputAction m_Gameplay_Zoom;
         private readonly InputAction m_Gameplay_Crouch;
         private readonly InputAction m_Gameplay_Sprint;
         private readonly InputAction m_Gameplay_Fire1;
-        private readonly InputAction m_Gameplay_Weapon1;
+        private readonly InputAction m_Gameplay_Switch;
         private readonly InputAction m_Gameplay_Jump;
-        private readonly InputAction m_Gameplay_Direction;
         private readonly InputAction m_Gameplay_Reload;
+        private readonly InputAction m_Gameplay_Fire2;
+        private readonly InputAction m_Gameplay_Interact;
         public struct GameplayActions
         {
             private @TPSControls m_Wrapper;
             public GameplayActions(@TPSControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Look => m_Wrapper.m_Gameplay_Look;
             public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-            public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
             public InputAction @Zoom => m_Wrapper.m_Gameplay_Zoom;
             public InputAction @Crouch => m_Wrapper.m_Gameplay_Crouch;
             public InputAction @Sprint => m_Wrapper.m_Gameplay_Sprint;
             public InputAction @Fire1 => m_Wrapper.m_Gameplay_Fire1;
-            public InputAction @Weapon1 => m_Wrapper.m_Gameplay_Weapon1;
+            public InputAction @Switch => m_Wrapper.m_Gameplay_Switch;
             public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
-            public InputAction @Direction => m_Wrapper.m_Gameplay_Direction;
             public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
+            public InputAction @Fire2 => m_Wrapper.m_Gameplay_Fire2;
+            public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -416,9 +416,6 @@ namespace Dmpk_TPS
                     @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                     @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                     @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                    @Aim.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                    @Aim.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
-                    @Aim.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAim;
                     @Zoom.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                     @Zoom.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
                     @Zoom.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnZoom;
@@ -431,18 +428,21 @@ namespace Dmpk_TPS
                     @Fire1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire1;
                     @Fire1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire1;
                     @Fire1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire1;
-                    @Weapon1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon1;
-                    @Weapon1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon1;
-                    @Weapon1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWeapon1;
+                    @Switch.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitch;
+                    @Switch.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitch;
+                    @Switch.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwitch;
                     @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                    @Direction.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
-                    @Direction.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
-                    @Direction.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
                     @Reload.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                     @Reload.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
                     @Reload.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnReload;
+                    @Fire2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire2;
+                    @Fire2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire2;
+                    @Fire2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFire2;
+                    @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -453,9 +453,6 @@ namespace Dmpk_TPS
                     @Move.started += instance.OnMove;
                     @Move.performed += instance.OnMove;
                     @Move.canceled += instance.OnMove;
-                    @Aim.started += instance.OnAim;
-                    @Aim.performed += instance.OnAim;
-                    @Aim.canceled += instance.OnAim;
                     @Zoom.started += instance.OnZoom;
                     @Zoom.performed += instance.OnZoom;
                     @Zoom.canceled += instance.OnZoom;
@@ -468,18 +465,21 @@ namespace Dmpk_TPS
                     @Fire1.started += instance.OnFire1;
                     @Fire1.performed += instance.OnFire1;
                     @Fire1.canceled += instance.OnFire1;
-                    @Weapon1.started += instance.OnWeapon1;
-                    @Weapon1.performed += instance.OnWeapon1;
-                    @Weapon1.canceled += instance.OnWeapon1;
+                    @Switch.started += instance.OnSwitch;
+                    @Switch.performed += instance.OnSwitch;
+                    @Switch.canceled += instance.OnSwitch;
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
-                    @Direction.started += instance.OnDirection;
-                    @Direction.performed += instance.OnDirection;
-                    @Direction.canceled += instance.OnDirection;
                     @Reload.started += instance.OnReload;
                     @Reload.performed += instance.OnReload;
                     @Reload.canceled += instance.OnReload;
+                    @Fire2.started += instance.OnFire2;
+                    @Fire2.performed += instance.OnFire2;
+                    @Fire2.canceled += instance.OnFire2;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
                 }
             }
         }
@@ -488,15 +488,15 @@ namespace Dmpk_TPS
         {
             void OnLook(InputAction.CallbackContext context);
             void OnMove(InputAction.CallbackContext context);
-            void OnAim(InputAction.CallbackContext context);
             void OnZoom(InputAction.CallbackContext context);
             void OnCrouch(InputAction.CallbackContext context);
             void OnSprint(InputAction.CallbackContext context);
             void OnFire1(InputAction.CallbackContext context);
-            void OnWeapon1(InputAction.CallbackContext context);
+            void OnSwitch(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnDirection(InputAction.CallbackContext context);
             void OnReload(InputAction.CallbackContext context);
+            void OnFire2(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

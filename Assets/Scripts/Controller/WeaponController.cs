@@ -23,6 +23,11 @@ namespace Dmpk_TPS
             InputManager.Firing += f => fire = f;
         }
 
+        private void DropWeapon(bool obj)
+        {
+            
+        }
+
         void Start()
         {
             currentWeapon = weapons[0];

@@ -6,8 +6,8 @@ namespace Dmpk_TPS
 {
     public class InputManager : MonoBehaviour
     {
-        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading;
-        public static event Action<Vector2> Move, Mouse;
+        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading, Aiming, Interact;
+        public static event Action<Vector2> Move;
         public static event Action<float> Zoom;
         public static event Action<float> Switch;
         
@@ -34,13 +34,14 @@ namespace Dmpk_TPS
                 controls.Gameplay.Jump.canceled += context => Jumping?.Invoke(context.ReadValueAsButton());
 
                 controls.Gameplay.Zoom.performed += context => Zoom?.Invoke(context.ReadValue<Vector2>().y);
-                controls.Gameplay.Look.started += context => Mouse?.Invoke(context.ReadValue<Vector2>());
-                controls.Gameplay.Look.canceled += context => Mouse?.Invoke(context.ReadValue<Vector2>());
 
-                controls.Gameplay.Weapon1.performed += context => Switch?.Invoke(context.ReadValue<float>());
+                controls.Gameplay.Switch.performed += context => Switch?.Invoke(context.ReadValue<float>());
                 controls.Gameplay.Fire1.performed += context => Firing?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Fire1.canceled += context => Firing?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Reload.performed += context => Reloading?.Invoke(context.ReadValueAsButton());
+                controls.Gameplay.Fire2.performed += context => Aiming?.Invoke(context.ReadValueAsButton());
+                controls.Gameplay.Fire2.canceled += context => Aiming?.Invoke(context.ReadValueAsButton());
+                controls.Gameplay.Interact.performed += context => Interact?.Invoke(context.ReadValueAsButton());
             }
         }
 

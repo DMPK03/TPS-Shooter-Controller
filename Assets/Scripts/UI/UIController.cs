@@ -22,7 +22,7 @@ namespace Dmpk_TPS
 
         private void OnWeaponFire(int curent)
         {
-            ammoText.text = totalAmmo + $" / {curent}";
+            ammoText.text = $"{curent} / " + totalAmmo;
         }
 
         private void OnNewWeapon(string name, Sprite sprite, int total, int curent)
@@ -31,7 +31,7 @@ namespace Dmpk_TPS
             weaponImage.sprite = sprite;
             totalAmmo = total.ToString();
 
-            ammoText.text = totalAmmo + $" / {curent}"; 
+            ammoText.text = $"{curent} / " + totalAmmo; 
 
         }
     }
