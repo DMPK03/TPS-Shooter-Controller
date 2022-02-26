@@ -179,7 +179,7 @@ MonoBehaviour:
   rightHand: {fileID: 2384041733493022110}
   leftHand: {fileID: 2384041733039723848}
   muzzle: {fileID: 4951687906910882143}
-  clipSize: 10
+  clipSize: 1
   fireRate: 1
   rocketPrefab: {fileID: -6860633730725222740, guid: ce72a8ed9048b18429b9a10293b4b6f0, type: 3}
 --- !u!1 &2384041733039723849

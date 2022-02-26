@@ -4932,5 +4932,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 4388947112716342, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   radius: 5
-  rocketDamage: 5
+  rocketDamage: 50
   force: 10

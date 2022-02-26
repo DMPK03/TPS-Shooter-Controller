@@ -16,7 +16,10 @@ namespace Dmpk_TPS
 
         [Header("Info")]
         [SerializeField] private string weaponName;
+        public string WeaponName { get => weaponName;}
+
         [SerializeField] private Sprite weaponSprite;
+        public Sprite WeaponSprite { get => weaponSprite;}
 
         [Header("Audio")]
         [SerializeField] private protected AudioClip gunShotClip;
@@ -35,7 +38,8 @@ namespace Dmpk_TPS
         private protected CinemachineImpulseSource cameraRecoil;
         private protected int currentAmmo;
         private protected float nextTimeToFire = 0;
-        private protected AudioSource source;      
+        private protected AudioSource source;
+
 
         private void Awake()
         {
@@ -49,8 +53,10 @@ namespace Dmpk_TPS
             source.clip = gunShotClip;
             currentAmmo = UnityEngine.Random.Range(1, clipSize);
 
-            WeaponSelectedEvent?.Invoke(weaponName, weaponSprite, clipSize, currentAmmo);
+            WeaponSelectedEvent?.Invoke(WeaponName, WeaponSprite, clipSize, currentAmmo);
         }
+
+        public void WeaponSelected() => WeaponSelectedEvent?.Invoke(WeaponName, WeaponSprite, clipSize, currentAmmo);
 
         public void SendAmmo() => WeaponFireEvent?.Invoke(currentAmmo);
 

@@ -56,7 +56,6 @@ namespace Dmpk_TPS
             controller = GetComponent<CharacterController>();
 			jumpTimeoutDelta = jumpTimeout;
 			fallTimeoutDelta = fallTimeout;
-			Cursor.visible = false;
         }
 
         private void Move()

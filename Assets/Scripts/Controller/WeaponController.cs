@@ -9,23 +9,42 @@ namespace Dmpk_TPS
     public class WeaponController : MonoBehaviour
     {
         public static event Action<bool> SwitchWeapon, ReloadWeapon;
+        public static event Action<string> Warning;
         
         [SerializeField] private List<Weapon> weapons = new List<Weapon>();
         [SerializeField] private Transform weaponAttach;
 
         private Weapon currentWeapon, selected;
 
-        private bool fire, weaponReady = true;
+        private bool fire, drop, weaponReady = true;
 
         private void Awake() {
             InputManager.Switch += HandleInputSwitch;
             InputManager.Reloading += HandleInputReload;
+            InputManager.Drop += HandleInputDrop;
             InputManager.Firing += f => fire = f;
         }
 
-        private void DropWeapon(bool obj)
+        private void HandleInputDrop()
         {
+            int index = weapons.IndexOf(currentWeapon);
             
+            if( index != 0)
+            {
+                drop = true;
+                HandleInputSwitch(index);
+
+                weapons.Remove(currentWeapon);
+                Rigidbody rb = currentWeapon.gameObject.AddComponent<Rigidbody>();
+                currentWeapon.transform.SetParent(null);
+                rb.AddForce(this.transform.forward * 3, ForceMode.Impulse);
+                
+                Destroy(currentWeapon.gameObject, 3);
+            }
+            else
+            {
+                Warning?.Invoke("Cant drop primary weapon");
+            }    
         }
 
         void Start()
@@ -36,12 +55,16 @@ namespace Dmpk_TPS
 
         public void SwitchWeaponStart()
         {
-            currentWeapon.gameObject.SetActive(false);
+            if(drop)
+                drop = false;
+            else
+                currentWeapon.gameObject.SetActive(false);
 
             currentWeapon = selected != null? selected : currentWeapon;
 
             currentWeapon.gameObject.SetActive(true);
-            currentWeapon.SetIk();    
+            currentWeapon.SetIk();
+            currentWeapon.WeaponSelected();    
         }
 
         public void SwitchWeaponEnd()
@@ -65,7 +88,16 @@ namespace Dmpk_TPS
 
         public bool CanPickUp(Weapon weapon)
         {
-            return weapons.Count < 4 && weaponAttach.Find(weapon.name+"(Clone)") == null;
+            if(weapons.Count < 4 && weaponAttach.Find(weapon.name+"(Clone)") == null)
+            {
+                return true;
+            }
+            else
+            {
+                Warning?.Invoke("No empty weapon slots, drop something");
+                return false;    
+            }
+            
         }
         
         public void PickupWeapon(Weapon wpn)
@@ -105,20 +137,5 @@ namespace Dmpk_TPS
                currentWeapon.FireWeapon();
         }
 
-
-        void WallCheck()
-        {
-            /*LayerMask mask = LayerMask.GetMask("Enviroment");
-            if (Physics.Raycast(weaponAttach.position, transform.forward, .7f, mask ))
-            {
-                animationControll.Wall(true);
-                closeToWall = true;
-            }
-            else if (!Physics.Raycast(weaponAttach.position, transform.forward, 1f, mask ))
-            {
-                animationControll.Wall(false);
-                closeToWall = false;
-            }*/
-        }
     }
 }

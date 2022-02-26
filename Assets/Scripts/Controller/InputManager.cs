@@ -6,12 +6,14 @@ namespace Dmpk_TPS
 {
     public class InputManager : MonoBehaviour
     {
-        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading, Aiming, Interact;
+        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading, Aiming, Interact, Esc;
         public static event Action<Vector2> Move;
         public static event Action<float> Zoom;
         public static event Action<float> Switch;
+        public static event Action Drop;
         
         private TPSControls controls;
+        private bool uiMode;
 
         private void Awake()
         {
@@ -23,6 +25,7 @@ namespace Dmpk_TPS
             if (controls != null)
             {
                 controls.Gameplay.Enable();
+                controls.Ui.Enable();
 
                 controls.Gameplay.Move.performed += context => Move?.Invoke(context.ReadValue<Vector2>());
                 controls.Gameplay.Move.canceled += context => Move?.Invoke(context.ReadValue<Vector2>());
@@ -41,9 +44,27 @@ namespace Dmpk_TPS
                 controls.Gameplay.Reload.performed += context => Reloading?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Fire2.performed += context => Aiming?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Fire2.canceled += context => Aiming?.Invoke(context.ReadValueAsButton());
+                
+                controls.Gameplay.Drop.started += ctx => Drop?.Invoke();
+
                 controls.Gameplay.Interact.performed += context => Interact?.Invoke(context.ReadValueAsButton());
+
+                controls.Ui.Escape.performed += OnEscape;
             }
         }
 
+        private void OnEscape(InputAction.CallbackContext context)
+        {
+            uiMode = !uiMode;
+            Esc?.Invoke(uiMode);
+
+            if(uiMode)
+            {
+                controls.Gameplay.Disable();
+            }
+            else
+            controls.Gameplay.Enable();
+            
+        }
     }
 }

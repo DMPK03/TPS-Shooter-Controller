@@ -107,6 +107,14 @@ namespace Dmpk_TPS
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""8a8b84a3-a0fe-43d5-bd62-5dadda2c2d61"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -307,6 +315,44 @@ namespace Dmpk_TPS
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e0f4521-4711-4dcb-a31f-4c5d629b6913"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Ui"",
+            ""id"": ""2c13b39c-a6e1-4767-a22e-513b4704350e"",
+            ""actions"": [
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f4c7acd-8c49-4179-bf50-7227f72b6a68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""47824f1c-c942-46b6-8e66-34733c95e13f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +372,10 @@ namespace Dmpk_TPS
             m_Gameplay_Reload = m_Gameplay.FindAction("Reload", throwIfNotFound: true);
             m_Gameplay_Fire2 = m_Gameplay.FindAction("Fire2", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+            m_Gameplay_Drop = m_Gameplay.FindAction("Drop", throwIfNotFound: true);
+            // Ui
+            m_Ui = asset.FindActionMap("Ui", throwIfNotFound: true);
+            m_Ui_Escape = m_Ui.FindAction("Escape", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -386,6 +436,7 @@ namespace Dmpk_TPS
         private readonly InputAction m_Gameplay_Reload;
         private readonly InputAction m_Gameplay_Fire2;
         private readonly InputAction m_Gameplay_Interact;
+        private readonly InputAction m_Gameplay_Drop;
         public struct GameplayActions
         {
             private @TPSControls m_Wrapper;
@@ -401,6 +452,7 @@ namespace Dmpk_TPS
             public InputAction @Reload => m_Wrapper.m_Gameplay_Reload;
             public InputAction @Fire2 => m_Wrapper.m_Gameplay_Fire2;
             public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+            public InputAction @Drop => m_Wrapper.m_Gameplay_Drop;
             public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -443,6 +495,9 @@ namespace Dmpk_TPS
                     @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                    @Drop.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
+                    @Drop.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
+                    @Drop.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrop;
                 }
                 m_Wrapper.m_GameplayActionsCallbackInterface = instance;
                 if (instance != null)
@@ -480,10 +535,46 @@ namespace Dmpk_TPS
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
+                    @Drop.started += instance.OnDrop;
+                    @Drop.performed += instance.OnDrop;
+                    @Drop.canceled += instance.OnDrop;
                 }
             }
         }
         public GameplayActions @Gameplay => new GameplayActions(this);
+
+        // Ui
+        private readonly InputActionMap m_Ui;
+        private IUiActions m_UiActionsCallbackInterface;
+        private readonly InputAction m_Ui_Escape;
+        public struct UiActions
+        {
+            private @TPSControls m_Wrapper;
+            public UiActions(@TPSControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Escape => m_Wrapper.m_Ui_Escape;
+            public InputActionMap Get() { return m_Wrapper.m_Ui; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UiActions set) { return set.Get(); }
+            public void SetCallbacks(IUiActions instance)
+            {
+                if (m_Wrapper.m_UiActionsCallbackInterface != null)
+                {
+                    @Escape.started -= m_Wrapper.m_UiActionsCallbackInterface.OnEscape;
+                    @Escape.performed -= m_Wrapper.m_UiActionsCallbackInterface.OnEscape;
+                    @Escape.canceled -= m_Wrapper.m_UiActionsCallbackInterface.OnEscape;
+                }
+                m_Wrapper.m_UiActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Escape.started += instance.OnEscape;
+                    @Escape.performed += instance.OnEscape;
+                    @Escape.canceled += instance.OnEscape;
+                }
+            }
+        }
+        public UiActions @Ui => new UiActions(this);
         public interface IGameplayActions
         {
             void OnLook(InputAction.CallbackContext context);
@@ -497,6 +588,11 @@ namespace Dmpk_TPS
             void OnReload(InputAction.CallbackContext context);
             void OnFire2(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+            void OnDrop(InputAction.CallbackContext context);
+        }
+        public interface IUiActions
+        {
+            void OnEscape(InputAction.CallbackContext context);
         }
     }
 }
