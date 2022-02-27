@@ -7,7 +7,9 @@ Unity packages used:
   - Cinemachine
   - TextMeshPro
 
-Basic model and movement animations from Mixamo.
+Basic character model and movement animations from Mixamo.
+Weapon models from Opengameart.
+
 
 So far it includes:
 
@@ -34,12 +36,20 @@ Ik for differend hand positions for each weapon, so i wont need a sepparate anim
 ### Audio
 Only basic for now, gunshot, reload, gun empty.
 
+### Camera
+2 camera modes
+- free look/rotate mode
+- aiming mode where character faces camera direction and aims the weapon using Ik.
+
+Camera Zoom
 ### Health system and basic Ai
 Very basic state based ai (static, roaming atm, chase and attack coming soon)
 
 
 ### Inventory system and UI
 displays weapon/ammo health etc
+
+interact, drop weapons and basic UI.
 
 full ui and inventory coming soon
 
