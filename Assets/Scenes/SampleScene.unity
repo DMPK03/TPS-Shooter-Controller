@@ -204,15 +204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6855434312710346283, guid: c385b7d50bfefa2419da0e45b310d9b0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11971003
+      value: 0.119710006
       objectReference: {fileID: 0}
     - target: {fileID: 6855434312710346283, guid: c385b7d50bfefa2419da0e45b310d9b0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017082645
+      value: 0.000000017082655
       objectReference: {fileID: 0}
     - target: {fileID: 6855434312710346283, guid: c385b7d50bfefa2419da0e45b310d9b0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000020597757
+      value: -0.0000000020597768
       objectReference: {fileID: 0}
     - target: {fileID: 6855434312759836936, guid: c385b7d50bfefa2419da0e45b310d9b0, type: 3}
       propertyPath: m_RootOrder
@@ -4848,9 +4848,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "WSAD    -  Movement\t\tMouse 1  -  Fire\nSHIFT    -  Sprint\t\t\tMouse
-    2  -  Aim\nCTRL     -  Crouch\t\t          Mouse 3  -  Zoom\nSPACE  -  Jump\n\n1
-    - 4 - Weapon Select\nR - Reload\nG - Drop"
+  m_text: "WSAD    -  Movement\t\t\nSHIFT    -  Sprint\t\t\t\nCTRL     -  Crouch\t\t         
+    \nSPACE  -  Jump\n\nMouse Left     -  Fire\nMouse Right   -  Toggle Aim Mode\nMouse
+    wheel  -  Zoom\n\n1 - 4 - Weapon Select\nR - Reload\nG - Drop"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

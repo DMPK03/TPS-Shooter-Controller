@@ -84,7 +84,7 @@ namespace Dmpk_TPS
             MovementController.Jump += j => animator.SetBool(jump, j);
             MovementController.FreeFall += ff => animator.SetBool(freeFall, ff);
             MovementController.Crouch += c => animator.SetBool(crouch, c);
-            InputManager.Aiming += a => canIkSpine = a;
+            InputManager.Aiming += () => canIkSpine = !canIkSpine;
             WeaponController.ReloadWeapon += ReloadWeapon;
             WeaponController.SwitchWeapon += SwitchWeapon;
         }

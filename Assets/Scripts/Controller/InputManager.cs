@@ -6,11 +6,11 @@ namespace Dmpk_TPS
 {
     public class InputManager : MonoBehaviour
     {
-        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading, Aiming, Interact, Esc;
+        public static event Action<bool> Jumping, Crouching, Sprinting, Firing, Reloading, Interact, Esc;
         public static event Action<Vector2> Move;
         public static event Action<float> Zoom;
         public static event Action<float> Switch;
-        public static event Action Drop;
+        public static event Action Drop, Aiming;
         
         private TPSControls controls;
         private bool uiMode;
@@ -42,8 +42,7 @@ namespace Dmpk_TPS
                 controls.Gameplay.Fire1.performed += context => Firing?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Fire1.canceled += context => Firing?.Invoke(context.ReadValueAsButton());
                 controls.Gameplay.Reload.performed += context => Reloading?.Invoke(context.ReadValueAsButton());
-                controls.Gameplay.Fire2.performed += context => Aiming?.Invoke(context.ReadValueAsButton());
-                controls.Gameplay.Fire2.canceled += context => Aiming?.Invoke(context.ReadValueAsButton());
+                controls.Gameplay.Fire2.performed += context => Aiming?.Invoke();
                 
                 controls.Gameplay.Drop.started += ctx => Drop?.Invoke();
 

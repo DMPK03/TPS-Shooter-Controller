@@ -19,7 +19,7 @@ namespace Dmpk_TPS
         private void Awake() 
         {
 			InputManager.Zoom += CameraZoom;
-			InputManager.Aiming += aim => isAiming = aim;
+			InputManager.Aiming += () => isAiming = !isAiming;
         }
 
         private void Start() {
